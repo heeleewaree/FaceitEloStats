@@ -1,0 +1,14 @@
+C:\Users\limon\source\repos\FaceitEloStats\FaceitEloStats\bin\Debug\FaceitEloStats.exe.config
+C:\Users\limon\source\repos\FaceitEloStats\FaceitEloStats\bin\Debug\FaceitEloStats.exe
+C:\Users\limon\source\repos\FaceitEloStats\FaceitEloStats\bin\Debug\FaceitEloStats.pdb
+C:\Users\limon\source\repos\FaceitEloStats\FaceitEloStats\obj\Debug\FaceitEloStats.csproj.AssemblyReference.cache
+C:\Users\limon\source\repos\FaceitEloStats\FaceitEloStats\obj\Debug\FaceitEloStats.Properties.Resources.resources
+C:\Users\limon\source\repos\FaceitEloStats\FaceitEloStats\obj\Debug\FaceitEloStats.csproj.GenerateResource.cache
+C:\Users\limon\source\repos\FaceitEloStats\FaceitEloStats\obj\Debug\FaceitEloStats.csproj.CoreCompileInputs.cache
+C:\Users\limon\source\repos\FaceitEloStats\FaceitEloStats\obj\Debug\FaceitEloStats.exe
+C:\Users\limon\source\repos\FaceitEloStats\FaceitEloStats\obj\Debug\FaceitEloStats.pdb
+C:\Users\limon\source\repos\FaceitEloStats\FaceitEloStats\obj\Debug\FaceitEloStats.General.resources
+C:\Users\limon\source\repos\FaceitEloStats\FaceitEloStats\obj\Debug\FaceitEloStats.frmAddGames.resources
+C:\Users\limon\source\repos\FaceitEloStats\FaceitEloStats\obj\Debug\FaceitEloStats.frmELO.resources
+C:\Users\limon\source\repos\FaceitEloStats\FaceitEloStats\obj\Debug\FaceitEloStats.frmHS.resources
+C:\Users\limon\source\repos\FaceitEloStats\FaceitEloStats\obj\Debug\FaceitEloStats.frmKD.resources
