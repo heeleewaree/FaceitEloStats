@@ -74,6 +74,8 @@ namespace FaceitEloStats
             gr.DrawString("Worst: " + Convert.ToString(worstHs) + "%", new Font("Arial", 9), new SolidBrush(Color.White), new Point(textX, textY));
             gr.DrawString("Best: " + Convert.ToString(bestHs) + "%", new Font("Arial", 9), new SolidBrush(Color.White), new Point(textX, textY + interval));
             gr.DrawString("Average: " + Convert.ToString(Math.Round(1.0 * headShotsPercentage / (matches), 3) + "%"), new Font("Arial", 9), new SolidBrush(Color.White), new Point(textX, textY + interval * 2));
+            gr.DrawLine(new Pen(Color.Blue), new Point(X + 670, Y + 33 - (int)(Math.Round(1.0 * headShotsPercentage / (matches), 3)) * scale), new Point(X + 460, Y + 33 - (int)(Math.Round(1.0 * headShotsPercentage / (matches), 3)) * scale));
+            gr.DrawString(Convert.ToString(Math.Round(1.0 * headShotsPercentage / (matches), 3) + "%"), new Font("Arial", 8), new SolidBrush(Color.Blue), new Point(X + 675, Y + 27 - (int)(Math.Round(1.0 * headShotsPercentage / (matches), 3)) * scale));
 
             gr.Dispose();
         }

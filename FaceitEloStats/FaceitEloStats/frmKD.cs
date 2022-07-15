@@ -101,6 +101,9 @@ namespace FaceitEloStats
             gr.DrawString("Total assists: " + Convert.ToString(totalAssists), new Font("Arial", 9), new SolidBrush(Color.White), new Point(textX, textY + interval * 5));
             gr.DrawString("Total avg: " + Convert.ToString(Math.Round(1.0 * totalKills / matches, 3)), new Font("Arial", 9), new SolidBrush(Color.White), new Point(textX, textY + interval * 6));
             gr.DrawString("Avg: " + Convert.ToString(Math.Round(1.0 * avg / 20, 3)), new Font("Arial", 9), new SolidBrush(Color.White), new Point(textX, textY + interval * 7));
+            gr.DrawLine(new Pen(Color.Blue), new Point(X + 670, Y + 33 - (int)((Math.Round(1.0 * averageKd, 3)) * scale)), new Point(X + 460, Y + 33 - (int)((Math.Round(1.0 * averageKd, 3)) * scale)));
+            gr.DrawString(Convert.ToString(Math.Round(1.0 * averageKd, 3)), new Font("Arial", 8), new SolidBrush(Color.Blue), new Point(X + 675, Y + 27 - (int)((Math.Round(1.0 * averageKd, 3)) * scale)));
+
 
             gr.Dispose();
         }
