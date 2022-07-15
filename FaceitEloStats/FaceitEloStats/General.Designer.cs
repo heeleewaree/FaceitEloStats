@@ -35,7 +35,7 @@ namespace FaceitEloStats
             this.btnHs = new System.Windows.Forms.Button();
             this.btnElo = new System.Windows.Forms.Button();
             this.SubFormPanel = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblVersion = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SubFormPanel.SuspendLayout();
@@ -108,7 +108,7 @@ namespace FaceitEloStats
             // 
             // SubFormPanel
             // 
-            this.SubFormPanel.Controls.Add(this.label2);
+            this.SubFormPanel.Controls.Add(this.lblVersion);
             this.SubFormPanel.Controls.Add(this.label1);
             this.SubFormPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SubFormPanel.Location = new System.Drawing.Point(0, 53);
@@ -116,16 +116,16 @@ namespace FaceitEloStats
             this.SubFormPanel.Size = new System.Drawing.Size(884, 508);
             this.SubFormPanel.TabIndex = 2;
             // 
-            // label2
+            // lblVersion
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Impact", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(340, 242);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(235, 60);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "version 1.0";
+            this.lblVersion.AutoSize = true;
+            this.lblVersion.Font = new System.Drawing.Font("Impact", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblVersion.ForeColor = System.Drawing.Color.White;
+            this.lblVersion.Location = new System.Drawing.Point(340, 242);
+            this.lblVersion.Name = "lblVersion";
+            this.lblVersion.Size = new System.Drawing.Size(235, 60);
+            this.lblVersion.TabIndex = 8;
+            this.lblVersion.Text = "version 1.0";
             // 
             // label1
             // 
@@ -166,7 +166,7 @@ namespace FaceitEloStats
         private System.Windows.Forms.Button btnAddGames;
         private System.Windows.Forms.Panel SubFormPanel;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblVersion;
     }
 }
 

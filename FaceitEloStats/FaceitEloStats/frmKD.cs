@@ -55,12 +55,12 @@ namespace FaceitEloStats
             {
                 SolidBrush brush = new SolidBrush(Color.White);
                 Pen pen = new Pen(Color.White);
-                if (i + 1 < 4)
+                if (i + 1 < 3)
                 {
                     brush.Color = Color.Green;
                     pen.Color = Color.Green;
                 }
-                else if (i + 1 < 8)
+                else if (i + 1 < 7)
                 {
                     brush.Color = Color.Orange;
                     pen.Color = Color.Orange;

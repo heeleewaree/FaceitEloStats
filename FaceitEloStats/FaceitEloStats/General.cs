@@ -18,7 +18,12 @@ namespace FaceitEloStats
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             UsingClass();
+
+            #region Version
+            lblVersion.Text = "version 1.1";
+            #endregion
         }
+
 
         #region Global Vars
 
