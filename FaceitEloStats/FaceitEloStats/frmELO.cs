@@ -24,19 +24,26 @@ namespace FaceitEloStats
                 int X = 50;
                 int Y = this.Height - 30;
                 int scale = 3;
+                int textX = 735;
+                int textY = 18;
+
                 gr.DrawLine(new Pen(Color.White), new Point(X, Y), new Point(X + 670, Y));
                 gr.DrawLine(new Pen(Color.White), new Point(X, Y), new Point(X, 20));
                 gr.DrawLine(new Pen(Color.White), new Point(X + 670, Y), new Point(X + 670, 20));
                 gr.DrawLine(new Pen(Color.White), new Point(X + 670, 20), new Point(X, 20));
 
+
+                #region Elo Lines
                 int scaleY = 700 / ((matches * 3) / 2);
                 for (int i = 1; i < matches; i++)
                     gr.DrawLine(new Pen(Color.White), new Point(X + (scaleY * (i)), Y + 250 - (elo[i] / scale)), new Point(X + (scaleY * (i - 1)), Y + 250 - (elo[i - 1] / scale)));
+                #endregion
 
+                #region Skill Level Elo Lines
                 int[] ELO = new int[10] { 1, 801, 951, 1101, 1251, 1401, 1551, 1701, 1851, 2001 };
+                SolidBrush brush = new SolidBrush(Color.White);
                 for (int i = 1; i < 10; i++)
                 {
-                    SolidBrush brush = new SolidBrush(Color.White);
                     Pen pen = new Pen(Color.White);
                     if (i + 1 < 4)
                     {
@@ -57,9 +64,23 @@ namespace FaceitEloStats
                     gr.DrawLine(pen, new Point(X - 5, Y + 250 - (ELO[i] / scale)), new Point(X + 670, Y + 250 - (ELO[i] / scale)));
                     gr.DrawString(Convert.ToString(i + 1), new Font("Arial", 8), brush, new Point(X - 25, Y + 245 - (ELO[i] / scale)));
                 }
+                #endregion
 
-                int textX = 735;
-                int textY = 18;
+                #region Max Elo Point
+                int maxElo = elo[0];
+                int numMaxElo = 0;
+                for (int i = 0; i < matches; i++)
+                {
+                    if (elo[i] >= maxElo)
+                    {
+                        maxElo = elo[i];
+                        numMaxElo = i;
+                    }
+                }
+                gr.FillEllipse(new SolidBrush(Color.DeepPink), new Rectangle(X + (scaleY * (numMaxElo)) - 2, (int)(Y + 250 - (maxElo / scale) - 2), 4, 4));
+                #endregion
+
+                #region Calculating Values
                 int worstElo = elo[0];
                 int bestElo = elo[0];
                 int interval = 15;
@@ -86,17 +107,62 @@ namespace FaceitEloStats
                         break;
                     }
                 }
+                #endregion
 
+                #region Text
                 gr.DrawString("Worst: " + Convert.ToString(worstElo), new Font("Arial", 9), new SolidBrush(Color.White), new Point(textX, textY + interval * 2));
                 gr.DrawString("Best: " + Convert.ToString(bestElo), new Font("Arial", 9), new SolidBrush(Color.White), new Point(textX, textY + interval * 3));
                 gr.DrawString("Now: " + Convert.ToString(elo[matches - 1]), new Font("Arial", 9), new SolidBrush(Color.White), new Point(textX, textY + interval));
                 gr.DrawString("Lvl: " + Convert.ToString(lvl), new Font("Arial", 9), new SolidBrush(Color.White), new Point(textX, textY));
-                gr.DrawString("Still elo: " + Convert.ToString(stillElo), new Font("Arial", 9), new SolidBrush(Color.White), new Point(textX, textY + interval * 4));
-                gr.DrawString("Still games: " + Convert.ToString(stillGames), new Font("Arial", 9), new SolidBrush(Color.White), new Point(textX, textY + interval * 5));
-                gr.DrawString("Win rate: " + Convert.ToString(Math.Round(100.0 * wins / (matches), 3) + "%"), new Font("Arial", 9), new SolidBrush(Color.White), new Point(textX, textY + interval * 6));
-                gr.DrawString("Total games: " + Convert.ToString(matches), new Font("Arial", 9), new SolidBrush(Color.White), new Point(textX, textY + interval * 7));
-                gr.DrawString("Total wins: " + Convert.ToString(wins), new Font("Arial", 9), new SolidBrush(Color.White), new Point(textX, textY + interval * 8));
-                gr.DrawString("Total losses: " + Convert.ToString(matches - wins), new Font("Arial", 9), new SolidBrush(Color.White), new Point(textX, textY + interval * 9));
+                gr.DrawString("Still elo: " + Convert.ToString(stillElo), new Font("Arial", 9), new SolidBrush(Color.White), new Point(textX, textY + interval * 8));
+                gr.DrawString("Still wins: " + Convert.ToString(stillGames), new Font("Arial", 9), new SolidBrush(Color.White), new Point(textX, textY + interval * 9));
+                gr.DrawString("Win rate: " + Convert.ToString(Math.Round(100.0 * wins / (matches), 3) + "%"), new Font("Arial", 9), new SolidBrush(Color.White), new Point(textX, textY + interval * 7));
+                gr.DrawString("Total games: " + Convert.ToString(matches), new Font("Arial", 9), new SolidBrush(Color.White), new Point(textX, textY + interval * 4));
+                gr.DrawString("Total wins: " + Convert.ToString(wins), new Font("Arial", 9), new SolidBrush(Color.White), new Point(textX, textY + interval * 5));
+                gr.DrawString("Total losses: " + Convert.ToString(matches - wins), new Font("Arial", 9), new SolidBrush(Color.White), new Point(textX, textY + interval * 6));
+                gr.DrawString("Still games: " + Convert.ToString(Math.Round(stillGames / (1.0 * wins / (matches)), 0)), new Font("Arial", 9), new SolidBrush(Color.White), new Point(textX, textY + interval * 10));
+                #endregion
+
+                #region Wins Line
+                gr.DrawLine(new Pen(Color.White), new Point(textX, Y), new Point(textX + 135, Y));
+                gr.DrawLine(new Pen(Color.White), new Point(textX, Y - 30), new Point(textX + 135, Y - 30));
+                gr.DrawLine(new Pen(Color.White), new Point(textX, Y), new Point(textX, Y - 30));
+                gr.DrawLine(new Pen(Color.White), new Point(textX + 135, Y), new Point(textX + 135, Y - 30));
+
+                int winLine = 5;
+                for (int i = matches - 1; i > matches - 6; i--)
+                {
+                    if (result[i] == "win")
+                        gr.DrawString("W", new Font("Arial", 12), new SolidBrush(Color.Green), new Point(textX - 23 + (27 * winLine), Y - 23));
+                    else
+                        gr.DrawString("L", new Font("Arial", 12), new SolidBrush(Color.Red), new Point(textX - 23 + (27 * winLine), Y - 23));
+
+                    winLine--;
+                }
+                #endregion
+
+                #region Skill Level
+                float minAngle = 150.0f;
+                float maxAngle = 240.0f;
+                SolidBrush skillLevelBrush = new SolidBrush(Color.Green);
+                if (lvl < 4)
+                    skillLevelBrush.Color = Color.Green;
+                else if (lvl < 8)
+                    skillLevelBrush.Color = Color.DarkOrange;
+                else
+                    skillLevelBrush.Color = Color.Red;
+
+                float angle = lvl * (maxAngle / 10.0f);
+
+                int correction = 40;
+
+                gr.FillPie(skillLevelBrush, new Rectangle(textX + 1, Y - 200 + 1 + correction, 134, 133), minAngle, angle);
+                gr.DrawPie(new Pen(Color.White, 2), new Rectangle(textX, Y - 200 + correction, 135, 135), minAngle, maxAngle);
+                gr.DrawPie(new Pen(Color.White, 2), new Rectangle(textX + 13, Y - 200 + 13 + correction, 110, 110), minAngle, maxAngle);
+                gr.FillEllipse(new SolidBrush(Color.FromArgb(20, 20, 20)), new Rectangle(textX + 14, Y - 200 + 14 + correction, 108, 108));
+                gr.DrawString(Convert.ToString(lvl), new Font("Arial", 55), skillLevelBrush, new Point(textX + 36, Y - 200 + 30 + correction));
+
+                #endregion
 
                 gr.Dispose();
             }

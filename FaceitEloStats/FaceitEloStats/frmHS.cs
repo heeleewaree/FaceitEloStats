@@ -58,6 +58,20 @@ namespace FaceitEloStats
                     gr.DrawString(Convert.ToString(i * 10) + "%", new Font("Arial", 8), brush, new Point(X - 35, Y + 28 - (HS[i] * scale)));
                 }
 
+                #region Max HS Point
+                int maxHs = hs[0];
+                int numMaxHs = 0;
+                for (int i = 0; i < matches; i++)
+                {
+                    if (hs[i] >= maxHs)
+                    {
+                        maxHs = hs[i];
+                        numMaxHs = i;
+                    }
+                }
+                gr.FillEllipse(new SolidBrush(Color.DeepPink), new Rectangle(X + (scaleY * numMaxHs) - 2, (int)((Y + 33 - (maxHs * scale)) - 2), 4, 4));
+                #endregion
+
                 int textX = 735;
                 int textY = 18;
                 int worstHs = hs[0];

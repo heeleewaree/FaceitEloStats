@@ -77,6 +77,20 @@ namespace FaceitEloStats
                     gr.DrawString(Convert.ToString(KD[i]), new Font("Arial", 8), brush, new Point(X - 35, Y + 28 - (int)(KD[i] * scale)));
                 }
 
+                #region Max KD Point
+                double maxKd = kd[0];
+                int numMaxKd = 0;
+                for (int i = 0; i < matches; i++)
+                {
+                    if (kd[i] >= maxKd)
+                    {
+                        maxKd = kd[i];
+                        numMaxKd = i;
+                    }
+                }
+                gr.FillEllipse(new SolidBrush(Color.DeepPink), new Rectangle(X + (scaleY * numMaxKd) - 2, (int)((Y + 33 - (maxKd * scale)) - 2), 4, 4));
+                #endregion
+
                 int textX = 735;
                 int textY = 18;
                 double worstKd = kd[0];
