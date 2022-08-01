@@ -120,7 +120,7 @@ namespace FaceitEloStats
                 gr.DrawString("Total games: " + Convert.ToString(matches), new Font("Arial", 9), new SolidBrush(Color.White), new Point(textX, textY + interval * 4));
                 gr.DrawString("Total wins: " + Convert.ToString(wins), new Font("Arial", 9), new SolidBrush(Color.White), new Point(textX, textY + interval * 5));
                 gr.DrawString("Total losses: " + Convert.ToString(matches - wins), new Font("Arial", 9), new SolidBrush(Color.White), new Point(textX, textY + interval * 6));
-                gr.DrawString("Still games: " + Convert.ToString(Math.Round(stillGames / (1.0 * wins / (matches)), 0)), new Font("Arial", 9), new SolidBrush(Color.White), new Point(textX, textY + interval * 10));
+                //gr.DrawString("Still games: " + Convert.ToString(Math.Round(stillGames / (1.0 * wins / (matches)), 0)), new Font("Arial", 9), new SolidBrush(Color.White), new Point(textX, textY + interval * 10));
                 #endregion
 
                 #region Wins Line
@@ -135,17 +135,19 @@ namespace FaceitEloStats
                     if (result[i] == "win")
                         gr.DrawString("W", new Font("Arial", 12), new SolidBrush(Color.Green), new Point(textX - 23 + (27 * winLine), Y - 23));
                     else
-                        gr.DrawString("L", new Font("Arial", 12), new SolidBrush(Color.Red), new Point(textX - 23 + (27 * winLine), Y - 23));
+                        gr.DrawString("L", new Font("Arial", 12), new SolidBrush(Color.Red), new Point(textX - 23 + (27 * winLine) + 3, Y - 23));
 
                     winLine--;
                 }
                 #endregion
 
                 #region Skill Level
-                float minAngle = 150.0f;
-                float maxAngle = 240.0f;
+                float minAngle = 156.0f;
+                float maxAngle = 228.0f;
                 SolidBrush skillLevelBrush = new SolidBrush(Color.Green);
-                if (lvl < 4)
+                if (lvl < 2)
+                    skillLevelBrush.Color = Color.White;
+                else if (lvl < 4)
                     skillLevelBrush.Color = Color.Green;
                 else if (lvl < 8)
                     skillLevelBrush.Color = Color.DarkOrange;
@@ -157,10 +159,15 @@ namespace FaceitEloStats
                 int correction = 40;
 
                 gr.FillPie(skillLevelBrush, new Rectangle(textX + 1, Y - 200 + 1 + correction, 134, 133), minAngle, angle);
-                gr.DrawPie(new Pen(Color.White, 2), new Rectangle(textX, Y - 200 + correction, 135, 135), minAngle, maxAngle);
-                gr.DrawPie(new Pen(Color.White, 2), new Rectangle(textX + 13, Y - 200 + 13 + correction, 110, 110), minAngle, maxAngle);
+                gr.DrawPie(new Pen(Color.LightGray, 2), new Rectangle(textX, Y - 200 + correction, 135, 135), minAngle, maxAngle);
+                gr.DrawPie(new Pen(Color.LightGray, 2), new Rectangle(textX + 13, Y - 200 + 13 + correction, 110, 110), minAngle, maxAngle);
+                gr.DrawLine(new Pen(Color.LightGray, 2), new Point(textX + 1, Y - 200 + 70 + correction), new Point(textX + 135, Y - 200 + 70 + correction));
                 gr.FillEllipse(new SolidBrush(Color.FromArgb(20, 20, 20)), new Rectangle(textX + 14, Y - 200 + 14 + correction, 108, 108));
-                gr.DrawString(Convert.ToString(lvl), new Font("Arial", 55), skillLevelBrush, new Point(textX + 36, Y - 200 + 30 + correction));
+                
+                if (lvl != 10)
+                    gr.DrawString(Convert.ToString(lvl), new Font("Arial", 55), skillLevelBrush, new Point(textX + 36, Y - 200 + 30 + correction));
+                else
+                    gr.DrawString(Convert.ToString(lvl), new Font("Arial", 55), skillLevelBrush, new Point(textX + 36 - 23, Y - 200 + 30 + correction));
 
                 #endregion
 

@@ -20,7 +20,7 @@ namespace FaceitEloStats
             UsingClass();
 
             #region Version
-            lblVersion.Text = "version 1.4.1";
+            lblVersion.Text = "version 1.4.6";
             lblVersion.Location = new Point(lblVersion.Location.X - 25, lblVersion.Location.Y);
             #endregion
         }
