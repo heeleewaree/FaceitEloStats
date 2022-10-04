@@ -29,6 +29,7 @@ namespace FaceitEloStats
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(General));
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnKD = new System.Windows.Forms.Button();
             this.btnAddGames = new System.Windows.Forms.Button();
@@ -37,8 +38,10 @@ namespace FaceitEloStats
             this.SubFormPanel = new System.Windows.Forms.Panel();
             this.lblVersion = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.pbLogo = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.SubFormPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -108,8 +111,10 @@ namespace FaceitEloStats
             // 
             // SubFormPanel
             // 
+            this.SubFormPanel.BackColor = System.Drawing.Color.Transparent;
             this.SubFormPanel.Controls.Add(this.lblVersion);
             this.SubFormPanel.Controls.Add(this.label1);
+            this.SubFormPanel.Controls.Add(this.pbLogo);
             this.SubFormPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SubFormPanel.Location = new System.Drawing.Point(0, 53);
             this.SubFormPanel.Name = "SubFormPanel";
@@ -119,9 +124,10 @@ namespace FaceitEloStats
             // lblVersion
             // 
             this.lblVersion.AutoSize = true;
+            this.lblVersion.BackColor = System.Drawing.Color.White;
             this.lblVersion.Font = new System.Drawing.Font("Impact", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblVersion.ForeColor = System.Drawing.Color.White;
-            this.lblVersion.Location = new System.Drawing.Point(340, 242);
+            this.lblVersion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.lblVersion.Location = new System.Drawing.Point(545, 75);
             this.lblVersion.Name = "lblVersion";
             this.lblVersion.Size = new System.Drawing.Size(235, 60);
             this.lblVersion.TabIndex = 8;
@@ -130,13 +136,26 @@ namespace FaceitEloStats
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Font = new System.Drawing.Font("Impact", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(217, 182);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.label1.Location = new System.Drawing.Point(422, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(459, 60);
             this.label1.TabIndex = 7;
             this.label1.Text = "made by heeleewaree";
+            // 
+            // pbLogo
+            // 
+            this.pbLogo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pbLogo.Image = ((System.Drawing.Image)(resources.GetObject("pbLogo.Image")));
+            this.pbLogo.InitialImage = ((System.Drawing.Image)(resources.GetObject("pbLogo.InitialImage")));
+            this.pbLogo.Location = new System.Drawing.Point(0, 0);
+            this.pbLogo.Name = "pbLogo";
+            this.pbLogo.Size = new System.Drawing.Size(884, 508);
+            this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbLogo.TabIndex = 9;
+            this.pbLogo.TabStop = false;
             // 
             // General
             // 
@@ -146,6 +165,7 @@ namespace FaceitEloStats
             this.ClientSize = new System.Drawing.Size(884, 561);
             this.Controls.Add(this.SubFormPanel);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(900, 600);
             this.MinimumSize = new System.Drawing.Size(900, 600);
             this.Name = "General";
@@ -153,6 +173,7 @@ namespace FaceitEloStats
             this.panel1.ResumeLayout(false);
             this.SubFormPanel.ResumeLayout(false);
             this.SubFormPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -167,6 +188,7 @@ namespace FaceitEloStats
         private System.Windows.Forms.Panel SubFormPanel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblVersion;
+        private System.Windows.Forms.PictureBox pbLogo;
     }
 }
 

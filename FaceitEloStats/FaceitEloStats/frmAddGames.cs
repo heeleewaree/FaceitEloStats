@@ -11,13 +11,13 @@ namespace FaceitEloStats
         public frmAddGames()
         {
             InitializeComponent();
-            dataGridView1.RowCount = 1000;
+            dataGridView1.RowCount = maxGames;
             InitialDesign();
         }
 
         #region Global Vars
 
-        String[] line = new String[1000];
+        String[] line = new String[maxGames];
 
         #endregion
 
@@ -29,7 +29,7 @@ namespace FaceitEloStats
             {
                 StreamReader file = new StreamReader(@"C:\FaceitElo Stats\config.cfg");
                 line[0] = file.ReadLine();
-                while ((line[i - 1] != "") && (i < 998))
+                while ((line[i - 1] != "") && (i < maxGames - 2))
                 {
                     String _line = line[i - 1];
                     String _cell = "";
@@ -158,7 +158,7 @@ namespace FaceitEloStats
             try
             {
                 StreamWriter file = new StreamWriter(@"C:\FaceitElo Stats\config.cfg");
-                for (int i = 0; i < 998; i++)
+                for (int i = 0; i < maxGames - 2; i++)
                 {
                     file.WriteLine(dataGridView1.Rows[i].Cells[0].Value + "\t" + dataGridView1.Rows[i].Cells[1].Value + "\t" + dataGridView1.Rows[i].Cells[2].Value + "\t" + dataGridView1.Rows[i].Cells[3].Value + "\t" + dataGridView1.Rows[i].Cells[4].Value + "\t" + dataGridView1.Rows[i].Cells[5].Value + "\t" + dataGridView1.Rows[i].Cells[6].Value + "\t");
                 }

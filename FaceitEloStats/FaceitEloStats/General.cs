@@ -20,7 +20,7 @@ namespace FaceitEloStats
             UsingClass();
 
             #region Version
-            lblVersion.Text = "version 1.4.6";
+            lblVersion.Text = "version 1.4.8";
             lblVersion.Location = new Point(lblVersion.Location.X - 25, lblVersion.Location.Y);
             #endregion
         }
@@ -28,7 +28,11 @@ namespace FaceitEloStats
 
         #region Global Vars
 
-        String[] line = new String[1000];
+        String[] line = new String[maxGames];
+        bool formEloIsOpen = false;
+        bool formKdIsOpen = false;
+        bool formHsIsOpen = false;
+        bool formAddGamesIsOpen = false;
 
         #endregion
 
@@ -40,7 +44,7 @@ namespace FaceitEloStats
             {
                 StreamReader file = new StreamReader(@"C:\FaceitElo Stats\config.cfg");
                 line[0] = file.ReadLine();
-                while ((line[i - 1] != "") && (i < 998))
+                while ((line[i - 1] != "") && (i < maxGames - 2))
                 {
                     String _line = line[i - 1];
                     String _cell = "";
@@ -177,28 +181,76 @@ namespace FaceitEloStats
         #region Button Add Games
         private void btnAddGames_Click(object sender, EventArgs e)
         {
-            OpenSubForm(new frmAddGames());
+            if (formAddGamesIsOpen)
+            {
+                ActiveForm.Close();
+                formAddGamesIsOpen = false;
+            }
+            else
+            {
+                OpenSubForm(new frmAddGames());
+                formAddGamesIsOpen = true;
+                formEloIsOpen = false;
+                formHsIsOpen = false;
+                formKdIsOpen = false;
+            }
         }
         #endregion
 
         #region Button ELO
         private void btnElo_Click(object sender, EventArgs e)
         {
-            OpenSubForm(new frmELO());
+            if (formEloIsOpen)
+            {
+                ActiveForm.Close();
+                formEloIsOpen = false;
+            }
+            else
+            {
+                OpenSubForm(new frmELO());
+                formEloIsOpen = true;
+                formHsIsOpen = false;
+                formKdIsOpen = false;
+                formAddGamesIsOpen = false;
+            }
         }
         #endregion
 
         #region Button HS
         private void btnHs_Click(object sender, EventArgs e)
         {
-            OpenSubForm(new frmHS());
+            if (formHsIsOpen)
+            {
+                ActiveForm.Close();
+                formHsIsOpen = false;
+            }
+            else
+            {
+                OpenSubForm(new frmHS());
+                formHsIsOpen = true;
+                formKdIsOpen = false;
+                formAddGamesIsOpen = false;
+                formEloIsOpen = false;
+            }
         }
         #endregion
 
         #region Button KD
         private void btnKD_Click(object sender, EventArgs e)
         {
-            OpenSubForm(new frmKD());
+            if (formKdIsOpen)
+            {
+                ActiveForm.Close();
+                formKdIsOpen = false;
+            }
+            else
+            {
+                OpenSubForm(new frmKD());
+                formKdIsOpen = true;
+                formAddGamesIsOpen = false;
+                formEloIsOpen = false;
+                formHsIsOpen = false;
+            }
         }
         #endregion
     }
